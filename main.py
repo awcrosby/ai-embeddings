@@ -1,24 +1,24 @@
 from app import RAGHandler
 
+import time
+
 
 def main():
+    start_time = time.time()
     # rag_handler = RAGHandler()
     # rag_handler = RAGHandler(chunk_size=400, chunk_overlap=100, temperature=0.2, max_tokens=200)
-    rag_handler = RAGHandler(chunk_size=200, chunk_overlap=100, temperature=0.2, max_tokens=200)
-    query = ""
+    rag_handler = RAGHandler(chunk_size=400, chunk_overlap=100, temperature=0.2, max_tokens=200)
+    print(f"RAGHandler initialized in {time.time() - start_time} seconds")
     while True:
         user_input = input("Ask something about the document (or 'exit' or 'debug'): ")
 
         if user_input.lower() == "debug":
-            if query:
-                rag_handler._debug(query)
-            continue
-        if user_input.lower() == "exit":
+            rag_handler._debug()
+        elif user_input.lower() == "exit":
             print("Exiting...")
-            break  # Exit script
-
-        query = user_input
-        print(rag_handler.ask(query))
+            break
+        else:
+            print(rag_handler.ask(user_input)["answer"])
 
 
 if __name__ == "__main__":
