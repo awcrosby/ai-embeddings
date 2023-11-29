@@ -1,0 +1,12 @@
+chromadb==0.4.14
+langchain==0.0.316
+openai==0.28.1
+datasets
+pypdf
+python-dotenv
+sentence-transformers
+transformers
+
+# dev
+ruff
+isort
