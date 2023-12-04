@@ -12,13 +12,14 @@ def main():
     while True:
         user_input = input("Ask something about the document (or 'exit' or 'debug'): ")
 
-        if user_input.lower() == "debug":
-            rag_handler._debug()
-        elif user_input.lower() == "exit":
-            print("Exiting...")
-            break
-        else:
-            print(rag_handler.ask(user_input)["answer"])
+        match user_input.lower():
+            case "debug":
+                rag_handler._debug()
+            case "exit":
+                print("Exiting...")
+                break
+            case _:
+                print(rag_handler.ask(user_input)["answer"])
 
 
 if __name__ == "__main__":
